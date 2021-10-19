@@ -1,12 +1,9 @@
 package com.xloger.exlink.app.activity;
 
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.View;
+import androidx.annotation.Nullable;
+
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.xloger.exlink.app.BuildConfig;
 import com.xloger.exlink.app.R;

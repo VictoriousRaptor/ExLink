@@ -2,15 +2,6 @@ package com.xloger.exlink.app.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-
-import com.xloger.xlib.tool.XPermission;
-import com.xloger.xlib.tool.Xlog;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 
 /**
  * Created by xloger on 2月18日.
