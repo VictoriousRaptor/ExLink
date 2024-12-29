@@ -28,7 +28,7 @@ android {
         targetSdkVersion 30
         versionCode 18
         versionName "3.0"
-        signingConfig signingConfigs.config
+        // signingConfig signingConfigs.config
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
