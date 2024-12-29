@@ -42,12 +42,12 @@ object ExConfig {
         MyLog.isChecked = false
     }
 
-    fun loadFromApp(key: String): String {
+    fun loadFromApp(key: String): String? {
         return sp.getString(key, "")
     }
 
     @Deprecated("高版本不支持，不推荐使用")
-    fun loadFromXposed(key: String): String {
+    fun loadFromXposed(key: String): String? {
         try {
 
             val xsp = XSharedPreferences(Constant.PACKAGE_NAME, fileName)

@@ -2,7 +2,7 @@ package com.xloger.exlink.app.view
 
 import android.app.Activity
 import android.content.Context
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.widget.EditText
 import android.widget.Toast

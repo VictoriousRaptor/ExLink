@@ -1,8 +1,8 @@
 package com.xloger.exlink.app.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created on 16/6/1 下午1:48.

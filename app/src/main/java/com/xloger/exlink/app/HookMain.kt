@@ -6,10 +6,10 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
-import android.support.v7.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.appcompat.app.AppCompatActivity
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.xloger.exlink.app.entity.App
@@ -163,7 +163,7 @@ class HookMain : IXposedHookLoadPackage {
 
             val exUrlList = ruleList
                     .map { parseUrl(it, param) }
-                    .filter { it.isNotBlank() }
+                    .filter { it!!.isNotBlank() }
 
             if (exUrlList.isEmpty()) {
                 MyLog.e("Error：无法获取url")
@@ -172,11 +172,11 @@ class HookMain : IXposedHookLoadPackage {
                 MyLog.e("遇到多个 url 的特殊情况，暂不处理。$exUrlList")
                 return
             }
-            var exUrl: String = exUrlList[0]
+            var exUrl: String? = exUrlList[0]
 
             //Url规范化
             if (StreamUtil.isUrl(exUrl)) {
-                if (!exUrl.startsWith("http")) {
+                if (!exUrl?.startsWith("http")!!) {
                     MyLog.log("Url不符合规范，正在二次分析")
                     MyLog.log("当前externalUrl:" + exUrl)
                     exUrl = StreamUtil.clearUrl(exUrl)
@@ -215,7 +215,7 @@ class HookMain : IXposedHookLoadPackage {
             openUrl(param, uri)
         }
 
-        private fun parseUrl(rule: Rule, param: XC_MethodHook.MethodHookParam): String {
+        private fun parseUrl(rule: Rule, param: XC_MethodHook.MethodHookParam): String? {
             val intent = param.args[0] as Intent
             if (rule.extrasKey == EX_DAT) {
                 return intent.dataString
@@ -299,7 +299,7 @@ class HookMain : IXposedHookLoadPackage {
                     val keySet = extras?.keySet()
                     if (keySet != null) {
                         for (key in keySet) {
-                            val o = extras.get(key) ?: continue
+                            val o = extras?.get(key) ?: continue
                             val value = o.toString()
 
                             if (StreamUtil.isContain(value)) {
