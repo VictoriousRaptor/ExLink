@@ -13,22 +13,22 @@ repositories {
 }
 
 android {
-    signingConfigs {
-        config {
-            storeFile file("${keystore}")
-            storePassword "${keystore_password}"
-            keyAlias "${key_alias}"
-            keyPassword "${key_password}"   
-        }
-    }
     compileSdkVersion 31
+    // signingConfigs {
+    //     config {
+    //         storeFile file("${keystore}")
+    //         storePassword "${keystore_password}"
+    //         keyAlias "${key_alias}"
+    //         keyPassword "${key_password}"   
+    //     }
+    // }
     defaultConfig {
         applicationId "com.xloger.exlink.app"
         minSdkVersion 15
         targetSdkVersion 30
         versionCode 18
         versionName "3.0"
-        signingConfig signingConfigs.config
+        signingConfig signingConfigs.debug
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
