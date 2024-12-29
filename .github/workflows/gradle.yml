@@ -26,6 +26,19 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
+    - name: Decode keystore and create jks
+      run: |
+        echo "${{ secrets.KEYSTORE }}" | base64 --decode > keystore.jks
+    
+    - name: Generate keystore.properties
+      run: |
+        cat <<EOF > keystore.properties
+        storePassword:${{ secrets.KEYSTORE_PASSWORD }}
+        keyPassword:${{ secrets.KEY_PASSWORD }}
+        keyAlias:${{ secrets.KEY_ALIAS }}
+        storeFile:keystore.jks
+        EOF
+
     - name: Build with Gradle
       uses: gradle/gradle-build-action@v2
       with:

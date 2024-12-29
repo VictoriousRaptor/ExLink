@@ -2,7 +2,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply from: 'properties.gradle'
+// apply from: 'properties.gradle'
 
 repositories {
     jcenter()
@@ -15,10 +15,10 @@ repositories {
 android {
     signingConfigs {
         config {
-            keyAlias 'key0'
-            keyPassword KeyPassword
-            storeFile file(keyStoreFile)
-            storePassword StorePassword
+            storeFile file("${keystore}")
+            storePassword "${keystore_password}"
+            keyAlias "${key_alias}"
+            keyPassword "${key_password}"   
         }
     }
     compileSdkVersion 31
